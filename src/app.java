@@ -25,13 +25,13 @@ public class app {
                         break;
                 }
             }catch(Exception e){
-                System.out.println("Digite un número");
+                System.out.println("Digite un dato valido");
                 entrada.next();
+
             }
         }
 
     }
-
     // frank
     public static int menu(){
         Scanner entrada = new Scanner(System.in);
@@ -42,12 +42,14 @@ public class app {
         valor = entrada.nextInt();
         return valor;
     }
-    public static void imprimir_factura(String usuario, String pedidos[][]){
-        System.out.println("\nMonto a pagar de "+usuario);
-        System.out.println("\nProducto\tPrecio\tCantidad\tSubtotal");
+    public static void imprimir_hoja_venta(String usuario, String pedidos[][]){
+        System.out.println("\n-------------------Hoja de venta-------------------");
+        System.out.println("BODEGA 'DOÑA HEMSY'");
+        System.out.println(("\nMonto a pagar de "+usuario).toUpperCase());
+        System.out.println(("Producto Precio Cantidad Subtotal").toUpperCase());
 
         for (int i = 0; i < pedidos.length; i++) {
-            System.out.println(pedidos[i][0].toUpperCase()+"\t"+pedidos[i][1]+"\t"+pedidos[i][2]+"\t"+pedidos[i][3]);
+            System.out.printf("%8s %6s %8s %8s\n", pedidos[i][0].toUpperCase(), pedidos[i][1].toUpperCase(), pedidos[i][2].toUpperCase(), pedidos[i][3].toUpperCase());
         }
 
         double total = 0;
@@ -102,11 +104,13 @@ public class app {
     // cristian
     public static String[][] productos(){
         String productos[][] = new String[][]{
-                {"Leche", "1.00"},
-                {"Pan", "2.00"},
+                {"Leche", "2.50"},
+                {"Pan", "0.30"},
                 {"Cereal", "3.00"},
-                {"Jabon", "4.00"},
-                {"Lavandina", "5.00"}
+                {"Jabon", "2.50"},
+                {"Azucar", "4.00"},
+                {"Arroz", "4.00"},
+                {"Lay's", "1.70"}
         };
         return productos;
     }
@@ -166,7 +170,7 @@ public class app {
                 pedidos[j][2]=pedido[2];
                 pedidos[j][3]=pedido[3];
             }
-            imprimir_factura(usuario,pedidos);
+            imprimir_hoja_venta(usuario,pedidos);
             //System.out.println(pedidos);
         }
         else{
